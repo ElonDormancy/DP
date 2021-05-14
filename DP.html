@@ -16,15 +16,51 @@
         document.getElementById('value12').value = "";
         i = 1;
     }
+    function dorder(a, b, c, d, e) {
+        document.getElementById('G').innerHTML = "";
+        if (a % 8 < 2 & a % 8 > -1) {
+            document.getElementById("A").innerHTML = ("A位置是:" + b);
+            document.getElementById("B").innerHTML = ("B位置是:" + c);
+            document.getElementById("C").innerHTML = ("C位置是:" + d);
+            document.getElementById("D").innerHTML = ("D位置是:" + e);
+            document.getElementById("E").innerHTML = ("下一球由" + b + "向" + d + "发球");
+        }
+        else if (a % 8 < 4 & a % 8 > 1) {
+            document.getElementById("A").innerHTML = ("A位置是:" + b);
+            document.getElementById("B").innerHTML = ("B位置是:" + c);
+            document.getElementById("C").innerHTML = ("C位置是:" + e);
+            document.getElementById("D").innerHTML = ("D位置是:" + d);
+            document.getElementById("E").innerHTML = ("下一球由" + e + "向" + b + "发球");
+        }
+        else if (a % 8 < 6 & a % 8 > 3) {
+            document.getElementById("A").innerHTML = ("A位置是:" + c);
+            document.getElementById("B").innerHTML = ("B位置是:" + b);
+            document.getElementById("C").innerHTML = ("C位置是:" + e);
+            document.getElementById("D").innerHTML = ("D位置是:" + d);
+            document.getElementById("E").innerHTML = ("下一球由" + c + "向" + e + "发球");
+        }
+        else if (a % 8 == 6 | a % 8 == 7) {
+            document.getElementById("A").innerHTML = ("A位置是:" + c);
+            document.getElementById("B").innerHTML = ("B位置是:" + b);
+            document.getElementById("C").innerHTML = ("C位置是:" + d);
+            document.getElementById("D").innerHTML = ("D位置是:" + e);
+            document.getElementById("E").innerHTML = ("下一球由" + d + "向" + c + "发球");
+        }
+        else {
+            window.alert("请重新输入")
+            document.getElementById('value11').value = "";
+            document.getElementById('value12').value = "";
+        }
+    }
     function getvalue() {
-        var G11 = document.getElementById('value11').value;
-        var G12 = document.getElementById('value12').value;
-        var G2 = document.getElementById('value2').value;
-        var G3 = document.getElementById('value3').value;
-        var G4 = document.getElementById('value4').value;
-        var G5 = document.getElementById('value5').value;
-        var G6 = document.getElementById('value6').value;
-        var G1 = Number(G11) + Number(G12);
+        G11 = document.getElementById('value11').value;
+        G12 = document.getElementById('value12').value;
+        G2 = document.getElementById('value2').value;
+        G3 = document.getElementById('value3').value;
+        G4 = document.getElementById('value4').value;
+        G5 = document.getElementById('value5').value;
+        G6 = document.getElementById('value6').value;
+        G1 = Number(G11) + Number(G12);
 
         document.getElementById("F").innerHTML = ("这是第" + G6 + "局");
         if (G6 == 5) {
@@ -38,15 +74,27 @@
                 if (G1 % 2 == 1) {
                     if (G1 % 8 < 2 & G1 % 8 > -1) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G2 + "向" + G5 + "发球");
+                        j = G4;
+                        G4 = G5;
+                        G5 = j;
                     }
                     else if (G1 % 8 < 4 & G1 % 8 > 1) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G5 + "向" + G3 + "发球");
+                        j = G2;
+                        G2 = G3;
+                        G3 = j;
                     }
                     else if (G1 % 8 < 6 & G1 % 8 > 3) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G3 + "向" + G4 + "发球");
+                        j = G4;
+                        G4 = G5;
+                        G5 = j;
                     }
                     else if (G1 % 8 == 6 | G1 % 8 == 7) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G4 + "向" + G2 + "发球");
+                        j = G2;
+                        G2 = G3;
+                        G3 = j;
                     }
                     else {
                         window.alert("请重新输入")
@@ -57,15 +105,27 @@
                 else {
                     if (G1 % 8 < 2 & G1 % 8 > -1) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G2 + "向" + G5 + "发球");
+                        j = G2;
+                        G2 = G3;
+                        G3 = j;
                     }
                     else if (G1 % 8 < 4 & G1 % 8 > 1) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G5 + "向" + G3 + "发球");
+                        j = G4;
+                        G4 = G5;
+                        G5 = j;
                     }
                     else if (G1 % 8 < 6 & G1 % 8 > 3) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G3 + "向" + G4 + "发球");
+                        j = G2;
+                        G2 = G3;
+                        G3 = j;
                     }
                     else if (G1 % 8 == 6 | G1 % 8 == 7) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G4 + "向" + G2 + "发球");
+                        j = G4;
+                        G4 = G5;
+                        G5 = j;
                     }
                     else {
                         window.alert("请重新输入")
@@ -76,45 +136,12 @@
 
             }
             else {
-                document.getElementById("G").innerHTML = ("顺序就比较简单啦")
+                dorder(G1, G2, G3, G4, G5)
             }
         }
 
         else {
-            document.getElementById('G').innerHTML = "";
-            if (G1 % 8 < 2 & G1 % 8 > -1) {
-                document.getElementById("A").innerHTML = ("A位置是:" + G2);
-                document.getElementById("B").innerHTML = ("B位置是:" + G3);
-                document.getElementById("C").innerHTML = ("C位置是:" + G4);
-                document.getElementById("D").innerHTML = ("D位置是:" + G5);
-                document.getElementById("E").innerHTML = ("下一球由" + G2 + "向" + G4 + "发球");
-            }
-            else if (G1 % 8 < 4 & G1 % 8 > 1) {
-                document.getElementById("A").innerHTML = ("A位置是:" + G2);
-                document.getElementById("B").innerHTML = ("B位置是:" + G3);
-                document.getElementById("C").innerHTML = ("C位置是:" + G5);
-                document.getElementById("D").innerHTML = ("D位置是:" + G4);
-                document.getElementById("E").innerHTML = ("下一球由" + G5 + "向" + G2 + "发球");
-            }
-            else if (G1 % 8 < 6 & G1 % 8 > 3) {
-                document.getElementById("A").innerHTML = ("A位置是:" + G3);
-                document.getElementById("B").innerHTML = ("B位置是:" + G2);
-                document.getElementById("C").innerHTML = ("C位置是:" + G5);
-                document.getElementById("D").innerHTML = ("D位置是:" + G4);
-                document.getElementById("E").innerHTML = ("下一球由" + G3 + "向" + G5 + "发球");
-            }
-            else if (G1 % 8 == 6 | G1 % 8 == 7) {
-                document.getElementById("A").innerHTML = ("A位置是:" + G3);
-                document.getElementById("B").innerHTML = ("B位置是:" + G2);
-                document.getElementById("C").innerHTML = ("C位置是:" + G4);
-                document.getElementById("D").innerHTML = ("D位置是:" + G5);
-                document.getElementById("E").innerHTML = ("下一球由" + G4 + "向" + G3 + "发球");
-            }
-            else {
-                window.alert("请重新输入")
-                document.getElementById('value11').value = "";
-                document.getElementById('value12').value = "";
-            }
+            dorder(G1, G2, G3, G4, G5)
 
 
 
