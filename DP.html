@@ -9,50 +9,115 @@
     <title>乒乓球双打顺序</title>
 </head>
 <script type="text/javascript">
+    i = 1
     function clearvalue() {
-        document.getElementById('value1').value = "";
+        document.getElementById('value11').value = "";
+        document.getElementById('value12').value = "";
+        i = 1;
     }
     function getvalue() {
-        var G1 = document.getElementById('value1').value;
+        var G11 = document.getElementById('value11').value;
+        var G12 = document.getElementById('value12').value;
         var G2 = document.getElementById('value2').value;
         var G3 = document.getElementById('value3').value;
         var G4 = document.getElementById('value4').value;
         var G5 = document.getElementById('value5').value;
-        if (G1 % 8 < 2 & G1 % 8 > 0) {
-            document.getElementById("A").innerHTML = ("A位置是:" + G2);
-            document.getElementById("B").innerHTML = ("B位置是:" + G3);
-            document.getElementById("C").innerHTML = ("C位置是:" + G4);
-            document.getElementById("D").innerHTML = ("D位置是:" + G5);
-            document.getElementById("E").innerHTML = ("下一球由" + G2 + "向" + G4 + "发球");
+        var G6 = document.getElementById('value6').value;
+        var G1 = Number(G11) + Number(G12);
+
+        document.getElementById("F").innerHTML = ("这是第" + G6 + "局");
+        if (G6 == 5) {
+            document.getElementById('A').innerHTML = "";
+            document.getElementById('B').innerHTML = "";
+            document.getElementById('C').innerHTML = "";
+            document.getElementById('D').innerHTML = "";
+            document.getElementById('E').innerHTML = "";
+            if (Math.max(G11, G12) == 5 & i == 1) {
+                i = 2
+                if (G1 % 2 == 1) {
+                    if (G1 % 8 < 2 & G1 % 8 > -1) {
+                        document.getElementById("G").innerHTML = ("双方换边，接球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G2 + "向" + G5 + "发球");
+                    }
+                    else if (G1 % 8 < 4 & G1 % 8 > 1) {
+                        document.getElementById("G").innerHTML = ("双方换边，接球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G5 + "向" + G3 + "发球");
+                    }
+                    else if (G1 % 8 < 6 & G1 % 8 > 3) {
+                        document.getElementById("G").innerHTML = ("双方换边，接球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G3 + "向" + G4 + "发球");
+                    }
+                    else if (G1 % 8 == 6 | G1 % 8 == 7) {
+                        document.getElementById("G").innerHTML = ("双方换边，接球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G4 + "向" + G2 + "发球");
+                    }
+                    else {
+                        window.alert("请重新输入")
+                        document.getElementById('value11').value = "";
+                        document.getElementById('value12').value = "";
+                    }
+                }
+                else {
+                    if (G1 % 8 < 2 & G1 % 8 > -1) {
+                        document.getElementById("G").innerHTML = ("双方换边，发球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G2 + "向" + G5 + "发球");
+                    }
+                    else if (G1 % 8 < 4 & G1 % 8 > 1) {
+                        document.getElementById("G").innerHTML = ("双方换边，发球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G5 + "向" + G3 + "发球");
+                    }
+                    else if (G1 % 8 < 6 & G1 % 8 > 3) {
+                        document.getElementById("G").innerHTML = ("双方换边，发球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G3 + "向" + G4 + "发球");
+                    }
+                    else if (G1 % 8 == 6 | G1 % 8 == 7) {
+                        document.getElementById("G").innerHTML = ("双方换边，发球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G4 + "向" + G2 + "发球");
+                    }
+                    else {
+                        window.alert("请重新输入")
+                        document.getElementById('value11').value = "";
+                        document.getElementById('value12').value = "";
+                    }
+                }
+
+            }
+            else {
+                document.getElementById("G").innerHTML = ("顺序就比较简单啦")
+            }
         }
-        else if (G1 % 8 < 4 & G1 % 8 > 1) {
-            document.getElementById("A").innerHTML = ("A位置是:" + G2);
-            document.getElementById("B").innerHTML = ("B位置是:" + G3);
-            document.getElementById("C").innerHTML = ("C位置是:" + G5);
-            document.getElementById("D").innerHTML = ("D位置是:" + G4);
-            document.getElementById("E").innerHTML = ("下一球由" + G5 + "向" + G2 + "发球");
-        }
-        else if (G1 % 8 < 6 & G1 % 8 > 3) {
-            document.getElementById("A").innerHTML = ("A位置是:" + G3);
-            document.getElementById("B").innerHTML = ("B位置是:" + G2);
-            document.getElementById("C").innerHTML = ("C位置是:" + G5);
-            document.getElementById("D").innerHTML = ("D位置是:" + G4);
-            document.getElementById("E").innerHTML = ("下一球由" + G3 + "向" + G5 + "发球");
-        }
-        else if (G1 % 8 < 1 | G1 % 8 > 5) {
-            document.getElementById("A").innerHTML = ("A位置是:" + G3);
-            document.getElementById("B").innerHTML = ("B位置是:" + G2);
-            document.getElementById("C").innerHTML = ("C位置是:" + G4);
-            document.getElementById("D").innerHTML = ("D位置是:" + G5);
-            document.getElementById("E").innerHTML = ("下一球由" + G4 + "向" + G3 + "发球");
-        }
+
         else {
-            window.alert("请重新输入")
-            document.getElementById('value1').value = "";
+            document.getElementById('G').innerHTML = "";
+            if (G1 % 8 < 2 & G1 % 8 > -1) {
+                document.getElementById("A").innerHTML = ("A位置是:" + G2);
+                document.getElementById("B").innerHTML = ("B位置是:" + G3);
+                document.getElementById("C").innerHTML = ("C位置是:" + G4);
+                document.getElementById("D").innerHTML = ("D位置是:" + G5);
+                document.getElementById("E").innerHTML = ("下一球由" + G2 + "向" + G4 + "发球");
+            }
+            else if (G1 % 8 < 4 & G1 % 8 > 1) {
+                document.getElementById("A").innerHTML = ("A位置是:" + G2);
+                document.getElementById("B").innerHTML = ("B位置是:" + G3);
+                document.getElementById("C").innerHTML = ("C位置是:" + G5);
+                document.getElementById("D").innerHTML = ("D位置是:" + G4);
+                document.getElementById("E").innerHTML = ("下一球由" + G5 + "向" + G2 + "发球");
+            }
+            else if (G1 % 8 < 6 & G1 % 8 > 3) {
+                document.getElementById("A").innerHTML = ("A位置是:" + G3);
+                document.getElementById("B").innerHTML = ("B位置是:" + G2);
+                document.getElementById("C").innerHTML = ("C位置是:" + G5);
+                document.getElementById("D").innerHTML = ("D位置是:" + G4);
+                document.getElementById("E").innerHTML = ("下一球由" + G3 + "向" + G5 + "发球");
+            }
+            else if (G1 % 8 == 6 | G1 % 8 == 7) {
+                document.getElementById("A").innerHTML = ("A位置是:" + G3);
+                document.getElementById("B").innerHTML = ("B位置是:" + G2);
+                document.getElementById("C").innerHTML = ("C位置是:" + G4);
+                document.getElementById("D").innerHTML = ("D位置是:" + G5);
+                document.getElementById("E").innerHTML = ("下一球由" + G4 + "向" + G3 + "发球");
+            }
+            else {
+                window.alert("请重新输入")
+                document.getElementById('value11').value = "";
+                document.getElementById('value12').value = "";
+            }
+
+
+
         }
-
-
-
     }
 
 </script>
@@ -60,36 +125,44 @@
 <body>
     <h1>乒乓球双打发球顺序</h1>
     <img src="Images/table.png">
-
-    <h3>A队</h3>
-    <div class="input1">
-        <input type="text" id="value2" placeholder="输入A位置姓名" />
-        <input type="text" id="value3" placeholder="输入B位置姓名" />
-    </div>
-    <h3>B队</h3>
-    <div class="input2">
-        <input type="text" id="value4" placeholder="输入C位置姓名" />
-        <input type="text" id="value5" placeholder="输入D位置姓名" />
-
-    </div>
-    <h3>输入当前分数和</h3>
-    <div class="input">
-        <input type="text" id="value1" placeholder="输入目前的分数和[0~]" />
-    </div>
-    <div class="input">
-        <input type="button" id="submit" value="提交" onclick="getvalue()" />
-    </div>
-    <input type="button" id="clear" value="清空" onclick="clearvalue()" />
     <div class="output">
         <ls id="A"></ls>
         <ls id="B"></ls>
         <ls id="C"></ls>
         <ls id="D"></ls>
-
     </div>
     <div class="output">
+        <ls id="F"></ls>
         <ls id="E"></ls>
+        <ls id="G"></ls>
     </div>
+    <h2>发第一球之前确定人员位置</h2>
+    <h3>A队</h3>
+    <div class="input1">
+        A: <input type="text" id="value2" placeholder="输入A位置姓名" />
+        B: <input type="text" id="value3" placeholder="输入B位置姓名" />
+    </div>
+    <h3>B队</h3>
+    <div class="input2">
+        C: <input type="text" id="value4" placeholder="输入C位置姓名" />
+        D: <input type="text" id="value5" placeholder="输入D位置姓名" />
+
+    </div>
+    <h2>______________________________________________</h2>
+    <h3>输入大比分总和</h3>
+    <div class="input">
+        <input type="text" id="value6" placeholder="输入大比分总和" />
+    </div>
+    <h3>分别输入A队B队分数</h3>
+    <div class="input">
+        A队<input type="text" id="value11" placeholder="输入A组分数" />
+        B队<input type="text" id="value12" placeholder="输入B组分数" />
+    </div>
+    <div class="input">
+        <input type="button" id="submit" value="提交" onclick="getvalue()" />
+    </div>
+    <input type="button" id="clear" value="清空" onclick="clearvalue()" />
+
 
 
 </body>

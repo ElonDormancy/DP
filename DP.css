@@ -9,7 +9,7 @@ img {
     margin-right: auto;
     margin-bottom: 50px;
     width: 80%;
-    max-width: 800px;
+    max-width: 600px;
 }
 
 .input1 {
@@ -23,12 +23,12 @@ img {
 
 input {
     width: 150px;
-    height: 20px;
-    line-height: 20px;
+    height: 30px;
+    line-height: 30px;
 }
 
 .input {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 #submit {
