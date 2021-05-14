@@ -60,6 +60,8 @@
         G4 = document.getElementById('value4').value;
         G5 = document.getElementById('value5').value;
         G6 = document.getElementById('value6').value;
+        G21 = document.getElementById('value21').value;
+        G22 = document.getElementById('value22').value;
         G1 = Number(G11) + Number(G12);
 
         document.getElementById("F").innerHTML = ("这是第" + G6 + "局");
@@ -74,27 +76,19 @@
                 if (G1 % 2 == 1) {
                     if (G1 % 8 < 2 & G1 % 8 > -1) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G2 + "向" + G5 + "发球");
-                        j = G4;
-                        G4 = G5;
-                        G5 = j;
+
                     }
                     else if (G1 % 8 < 4 & G1 % 8 > 1) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G5 + "向" + G3 + "发球");
-                        j = G2;
-                        G2 = G3;
-                        G3 = j;
+
                     }
                     else if (G1 % 8 < 6 & G1 % 8 > 3) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G3 + "向" + G4 + "发球");
-                        j = G4;
-                        G4 = G5;
-                        G5 = j;
+
                     }
                     else if (G1 % 8 == 6 | G1 % 8 == 7) {
                         document.getElementById("G").innerHTML = ("双方换边，接球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G4 + "向" + G2 + "发球");
-                        j = G2;
-                        G2 = G3;
-                        G3 = j;
+
                     }
                     else {
                         window.alert("请重新输入")
@@ -105,27 +99,19 @@
                 else {
                     if (G1 % 8 < 2 & G1 % 8 > -1) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G2 + "向" + G5 + "发球");
-                        j = G2;
-                        G2 = G3;
-                        G3 = j;
+
                     }
                     else if (G1 % 8 < 4 & G1 % 8 > 1) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G5 + "向" + G3 + "发球");
-                        j = G4;
-                        G4 = G5;
-                        G5 = j;
+
                     }
                     else if (G1 % 8 < 6 & G1 % 8 > 3) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G2 + "与" + G3 + "交换位置,交换后此时由" + G3 + "向" + G4 + "发球");
-                        j = G2;
-                        G2 = G3;
-                        G3 = j;
+
                     }
                     else if (G1 % 8 == 6 | G1 % 8 == 7) {
                         document.getElementById("G").innerHTML = ("双方换边，发球方" + G4 + "与" + G5 + "交换位置,交换后此时由" + G4 + "向" + G2 + "发球");
-                        j = G4;
-                        G4 = G5;
-                        G5 = j;
+
                     }
                     else {
                         window.alert("请重新输入")
@@ -136,17 +122,29 @@
 
             }
             else {
-                dorder(G1, G2, G3, G4, G5)
+                G2a = Number(G21) + Number(G22);
+                if (G2a % 2 == 1 & Math.max(G11, G12) > 5) {
+                    dorder(G1, G2, G3, G5, G4)
+                }
+                else if (G2a % 2 == 0 & Math.max(G11, G12) > 5) {
+                    dorder(G1, G3, G2, G4, G5)
+                }
+                else {
+                    dorder(G1, G2, G3, G4, G5)
+                }
+
             }
         }
-
         else {
             dorder(G1, G2, G3, G4, G5)
-
-
-
         }
     }
+
+
+
+
+
+
 
 </script>
 
@@ -183,15 +181,21 @@
     </div>
     <h3>分别输入A队B队分数</h3>
     <div class="input">
-        A队<input type="text" id="value11" placeholder="输入A组分数" />
-        B队<input type="text" id="value12" placeholder="输入B组分数" />
+        <input type="text" id="value11" placeholder="输入A组分数" />
+        <input type="text" id="value12" placeholder="输入B组分数" />
+    </div>
+    <h3>若为第五局请分别输入其中一队到达5分时的比分</h3>
+    <div class="input">
+        A队<input type="text" id="value21" placeholder="输入A组分数" />
+        B队<input type="text" id="value22" placeholder="输入B组分数" />
+
     </div>
     <div class="input">
         <input type="button" id="submit" value="提交" onclick="getvalue()" />
     </div>
     <input type="button" id="clear" value="清空" onclick="clearvalue()" />
 
-
+    <h3>注意：若为第五局则输入比分为5:n或者为n:5时只能点击提交只会执行一次，若须再次输入请点击清空重新输入</h3>
 
 </body>
 
